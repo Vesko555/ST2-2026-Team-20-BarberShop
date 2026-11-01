@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BarberShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BarberShop.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 py-3">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand fw-bold fs-4" asp-controller="Home" asp-action="Index">✂️ BarberShop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                    <ul class="navbar-nav align-items-center fs-5">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Начало</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-light" asp-controller="Appointments" asp-action="Create">Запази час</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-light" asp-controller="Appointments" asp-action="Index">График</a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 140px;" class="d-none d-sm-block"></div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-dark text-white-50 py-1 mt-auto" style="font-size: 0.85rem;">
+        <div class="container text-center">
+            &copy; 2026 - BarberShop - Всички права запазени. |
+            <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-white-50">Политика за поверителност</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

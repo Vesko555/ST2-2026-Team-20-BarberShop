@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BarberShop.Models.Appointment>
+
+@if (TempData["AiSuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
+        @TempData["AiSuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2>Запазени часове при бръснаря</h2>
+
+<form method="get" asp-action="Index" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="searchName" value="@ViewData["CurrentNameFilter"]" class="form-control" placeholder="Търси по име на клиент..." />
+    </div>
+    <div class="col-md-3">
+        <select name="serviceType" class="form-select">
+            <option value="">-- Всички услуги --</option>
+            <option value="Подстригване">Подстригване</option>
+            <option value="Оформяне на брада">Оформяне на брада</option>
+            <option value="Комплект">Комплект</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Търси / Филтрирай</button>
+        <a asp-action="Index" class="btn btn-secondary">Изчисти</a>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">+ Запиши нов час</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Телефон</th>
+            <th>Услуга</th>
+            <th>Дата и час</th>
+            <th>Бележки</th>
+            <th>Действия</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ClientName</td>
+                <td>@item.ClientPhone</td>
+                <td>@item.ServiceType</td>
+                <td>@item.DateTime.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@item.Notes</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редактирай</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

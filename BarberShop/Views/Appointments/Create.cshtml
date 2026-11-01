@@ -1,0 +1,32 @@
+﻿@model BarberShop.Models.Appointment
+
+<h2>Запазване на нов час</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Име на клиент</label>
+        <input asp-for="ClientName" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="Form-label">Телефон</label>
+        <input asp-for="ClientPhone" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Услуга</label>
+        <select asp-for="ServiceType" class="form-select" required>
+            <option value="Подстригване">Подстригване</option>
+            <option value="Оформяне на брада">Оформяне на брада</option>
+            <option value="Комплект">Комплект (Подстригване + Брада)</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Дата и час</label>
+        <input asp-for="DateTime" type="datetime-local" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Бележки</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Запази час</button>
+    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+</form>

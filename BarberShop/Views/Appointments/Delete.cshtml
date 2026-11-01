@@ -1,0 +1,20 @@
+﻿@model BarberShop.Models.Appointment
+
+<h2>Изтриване / Отмяна на час</h2>
+
+<div class="alert alert-danger">
+    <h4>Сигурни ли сте, че искате да изтриете този час?</h4>
+</div>
+
+<div>
+    <p><strong>Клиент:</strong> @Model.ClientName</p>
+    <p><strong>Телефон:</strong> @Model.ClientPhone</p>
+    <p><strong>Услуга:</strong> @Model.ServiceType</p>
+    <p><strong>Дата и час:</strong> @Model.DateTime.ToString("dd.MM.yyyy HH:mm")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Да, изтрий</button>
+    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+</form>
